@@ -1,0 +1,40 @@
+@charset 'UTF-8';
+
+.userinfo{
+	a{
+		text-decoration: none;
+		color:#000;
+	}
+	.top{
+		margin-top: 20px;
+		background: #fff;
+		padding: 5px;
+		position: relative;
+		height:64px;
+		.head{
+			position: absolute;
+			left:5px;
+			top:5px;
+			img{
+				width: 64px;
+				height: 64px;
+			}
+		}
+		.info{
+			position: absolute;
+			left:78px;
+			top:5px;
+		}
+	}
+
+	.i-panel{
+		list-style:none;
+		margin:20px 0 0 0;
+		padding:0;
+		background: #fff;
+		a{
+			display:block;
+			padding:10px;
+		}
+	}
+}

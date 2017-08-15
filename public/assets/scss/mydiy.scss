@@ -1,0 +1,30 @@
+@charset 'utf-8';
+
+
+.usi-top{
+	margin-top: 20px;
+	background: #fff;
+	padding: 5px;
+	position: relative;
+	height:76px;
+	.usi-top-head{
+		position: absolute;
+		left:5px;
+		top:5px;
+		img{
+			width: 64px;
+			height: 64px;
+		}
+	}
+	.usi-top-info{
+		position: absolute;
+		left:78px;
+		top:5px;
+		p{
+			margin: 0;
+		}
+	}
+}
+.li-mt{
+	margin:10px 0 10px 0;
+}
