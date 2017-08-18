@@ -6,10 +6,10 @@
  */
 
 return [
-	'host'=>'127.0.0.1',
-	'name'=>'test',
-	'user'=>'root',
-	'pass'=>'root',
+	'host'=>'iydou.cn',
+	'name'=>'cms',
+	'user'=>'cms',
+	'pass'=>'MyCjjJO3nWAKVuoU',
 	'charset'=>'utf-8',
 	'prefix'=>'ke_',
 	'port'=>3306

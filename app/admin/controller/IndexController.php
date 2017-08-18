@@ -80,4 +80,12 @@ class IndexController extends Controller
         return $this->render();
     }
 
+    // 登出系统
+    public function logout()
+    {
+        m('admin')->logout();
+        return $this->success('您已成功退出系统','admin.login');
+
+    }
+
 }

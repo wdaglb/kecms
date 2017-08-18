@@ -1,21 +1,19 @@
 {% extends 'layout.html' %}
 {% block body %}
-  <div class="container-layout padding-big-top padding-big-bottom">
+  <div class="container-layout padding-big-top padding-big-bottom bg-sub">
     <div class="line">
       <div class="xs7 xm8 xb9">
-        <a href="#">
-          <img src="/images/logo-gray.png" alt="KECMS" />
-        </a>
+        <h1 style="color:#fff">KECMS 后台管理面板</h1>
       </div>
-      <div class="xs5 xm4 xb3 padding-top">
-        <a href="#" class="win-homepage">设为首页</a> <span class="text-little text-gray">|</span>
-        <a href="#" class="win-favorite">加入收藏</a> <span class="text-little text-gray">|</span>
-        <a href="#" class="win-print">打印页面</a>
+      <div class="text-right padding-top">
+        <a style="color:#fff" href="{{ url('admin.logout') }}" id="logout">登出系统</a> <span class="text-little text-gray">|</span>
+
+        <a style="color:#fff" href="{{ url('pmd') }}">修改密码</a> <span class="text-little text-gray">|</span>
       </div>
     </div>
   </div>
 
-  <ul class="nav nav-main nav-navicon x2">
+  <ul class="nav nav-main nav-navicon x2 text-main border-mix">
     <li class="nav-head"><h2>设置</h2></li>
     <li><a href="">站点信息设置</a></li>
 

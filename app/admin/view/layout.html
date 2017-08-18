@@ -15,10 +15,6 @@
 
   <title>{% block title %}default{% endblock %} - KECMS</title>
 </head>
-<body>
-<div class="container">
-  {% block body %}{% endblock %}
-</div>
-</body>
-<script type="text/javascript">var token='{{ csrf_token }}';require.config({baseUrl:'{{ __WEB_PATH__ }}/../modules'});require(['{{ ct }}']);</script>
+<body>{% block body %}{% endblock %}</body>
+<script type="text/javascript">var web_path='{{ __WEB_PATH__ }}';var token='{{ csrf_token }}';require.config({baseUrl:web_path+'/../modules'});require(['{{ ct }}']);</script>
 </html>

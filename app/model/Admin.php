@@ -40,8 +40,11 @@ class Admin extends Model
             $this->error='登录失败';
             return false;
         }
+    }
 
-
+    public function logout()
+    {
+        session('AdminToken',null);
     }
 
 }
