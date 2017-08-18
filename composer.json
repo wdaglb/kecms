@@ -1,5 +1,16 @@
 {
+  "name": "ke/cms",
+  "type": "app",
+  "authors": [
+    {
+      "name": "King east",
+      "email": "1207877378@qq.com"
+    }
+  ],
   "require": {
     "ke/framework":"*"
+  },
+  "require-dev": {
+    "ke/framework":"1.*"
   }
 }
