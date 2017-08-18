@@ -5,5 +5,9 @@
  */
 use ke\Route;
 Route::group(['namespace'=>'admin'],function(){
-    Route::get('/admin',['as'=>'index','uses'=>'IndexController@index']);
+    Route::get('/admin',['as'=>'admin','uses'=>'IndexController@index']);
+
+    Route::any('/admin/login',['as'=>'adminlogin','uses'=>'IndexController@login']);
+    // 重置管理帐号密码
+    Route::any('/admin/reset',['as'=>'admin.reset','uses'=>'IndexController@reset']);
 });

@@ -4,9 +4,9 @@
  * http://cms.iydou.cn/
  */
 
-namespace app\controller;
+namespace app\index\controller;
 
-use app\Controller;
+use app\index\Controller;
 
 class IndexController extends Controller
 {

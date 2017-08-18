@@ -6,13 +6,11 @@
  */
 
 return [
-    // 是否开启底部调试信息
-    'ke-debug'=>false,
     // 是否开启域名根
     'url_domain_root'=>true,
 
     // 是否开启简洁路由
-    'is_simple_url'=>true,
+    'is_simple_url'=>false,
 
     // 是否自动分配模板目录
     'is_tpl_module'=>true,
@@ -35,11 +33,11 @@ return [
     // 数据库配置
     'database'=>[
         'host'=>'127.0.0.1',
-        'name'=>'new_shop',
+        'name'=>'test',
         'user'=>'root',
         'pass'=>'root',
         'charset'=>'utf-8',
-        'prefix'=>'cys_',
+        'prefix'=>'ke_',
         'port'=>3306
     ],
 ];

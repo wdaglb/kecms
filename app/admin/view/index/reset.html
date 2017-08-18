@@ -1,0 +1,20 @@
+{% extends 'layout.html' %}
+{% block title %}重置管理帐号密码{% endblock %}
+{% block body %}
+  <div style="width: 500px;margin: 0 auto">
+    <div class="panel">
+      <div class="panel-head border-sub bg-sub"><h1>重置管理帐号密码</h1></div>
+      <div class="panel-body">
+        <p>1.在配置目录[config]下新建文件[reset.json]</p>
+        <p>2.文件内容{"usr":"<b>root</b>","pmd":"<b>123456</b>"}</p>
+        <p>3.<a href="{{ url('admin.reset',{'act':'1'}) }}"><u>点击此处开始重设</u></a></p>
+        <p style="color:red">4.重设后所有管理帐号都会被清空</p>
+        <p>5.重设后帐号[<b>root</b>]密码[<b>123456</b>]</p>
+        <p>6.重设密码后为了系统安全请务必删除[reset.json]</p>
+        <p>7.<a href="{{ url('adminlogin') }}"><u>开始登录后台</u></a></p>
+
+      </div>
+      <div class="panel-foot">版权所有@ <a href="http://cms.iydou.cn/">KECMS http://cms.iydou.cn/</a></div>
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends 'layout.html' %}
+{% block title %}登录后台{% endblock %}
+{% block body %}
+    <div style="width: 500px;margin: 0 auto">
+        <div class="panel">
+            <div class="panel-head border-sub bg-sub"><h1>后台登录</h1></div>
+            <div class="panel-body">
+                <form id="form" method="post" class="form">
+                    <div class="form-group">
+                        <div class="label">
+                            <label for="usr">登录账号</label>
+                        </div>
+                        <div class="field">
+                            <input type="text" class="input" id="usr" name="usr" placeholder="请输入管理帐号" data-validate="required:请输入管理帐号" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="label">
+                            <label for="pmd">登录密码</label>
+                        </div>
+                        <div class="field">
+                            <input type="text" class="input" id="pmd" name="pmd" placeholder="帐号对应的密钥" data-validate="required:请输入帐号对应的密钥" />
+                        </div>
+                    </div>
+
+                    <div class="form-button">
+                        <button class="button" type="submit">登录</button>
+                        <p class="text-muted text-right">
+                            <a href="{{ url('admin.reset') }}"><small>忘记密码了？</small></a>
+                        </p>
+                    </div>
+                </form>
+            </div>
+            <div class="panel-foot">版权所有@ <a href="http://cms.iydou.cn/">KECMS http://cms.iydou.cn/</a></div>
+        </div>
+    </div>
+{% endblock %}

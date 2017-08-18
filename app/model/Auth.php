@@ -7,11 +7,12 @@ class Auth extends Model
 {
 	public function checkLogin()
 	{
-		$token=session('user_access_token');
+		$token=session('UserToken');
 		if(empty($token)){
-			header("Location:".url('login'));
-			exit;
+		    return false;
 		}
+
+
 	}
 
 	public function getInfo()

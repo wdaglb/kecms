@@ -4,7 +4,7 @@
  * http://cms.iydou.cn/
  */
 
-namespace app;
+namespace app\index;
 
 
 class Controller extends \ke\Controller

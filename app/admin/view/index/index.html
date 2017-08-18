@@ -1,10 +1,55 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Title</title>
-</head>
-<body>
+{% extends 'layout.html' %}
+{% block body %}
+  <div class="container-layout padding-big-top padding-big-bottom">
+    <div class="line">
+      <div class="xs7 xm8 xb9">
+        <a href="#">
+          <img src="/images/logo-gray.png" alt="KECMS" />
+        </a>
+      </div>
+      <div class="xs5 xm4 xb3 padding-top">
+        <a href="#" class="win-homepage">设为首页</a> <span class="text-little text-gray">|</span>
+        <a href="#" class="win-favorite">加入收藏</a> <span class="text-little text-gray">|</span>
+        <a href="#" class="win-print">打印页面</a>
+      </div>
+    </div>
+  </div>
 
-</body>
-</html>
+  <ul class="nav nav-main nav-navicon x2">
+    <li class="nav-head"><h2>设置</h2></li>
+    <li><a href="">站点信息设置</a></li>
+
+    <li class="nav-head"><h2>会员</h2></li>
+    <li><a href="">用户列表</a></li>
+    <li><a href="">用户组管理</a></li>
+
+    <li class="nav-head"><h2>内容</h2></li>
+    <li><a href="">文章管理</a></li>
+    <li><a href="">图片管理</a></li>
+
+    <li class="nav-head"><h2>运营</h2></li>
+    <li><a href="">友情链接管理</a></li>
+    <li><a href="">站点广告管理</a></li>
+
+    <li class="nav-head"><h2>安全</h2></li>
+    <li><a href="">修改管理密码</a></li>
+    <li><a href="">安全退出系统</a></li>
+  </ul>
+
+    <div class="panel x10">
+      <div class="panel-body">
+        <div class="txt txt-large radius-small bg-red">
+          起步</div>
+      </div>
+    </div>
+
+
+  <div class="clearfix"></div>
+
+  <div class="container-layout">
+    <div class="border-top padding-top">
+      <div class="text-center height-big">
+        版权所有 © iydou.cn All Rights Reserved，桂ICP备16010515号-1</div>
+    </div>
+  </div>
+{% endblock %}
