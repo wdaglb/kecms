@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "b348025387f8019cbc8d5d215c9ada8a",
+    "content-hash": "46f6799719629b9bad532eaa5bac6df8",
     "packages": [
         {
             "name": "ke/framework",
