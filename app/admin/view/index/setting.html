@@ -1,0 +1,100 @@
+{% extends 'layout.html' %}
+{% block body %}
+
+<div class="am-cf am-padding am-padding-bottom-0">
+  <div class="am-fl am-cf">
+    <strong class="am-text-primary am-text-lg">站点设置</strong>
+  </div>
+</div>
+<hr>
+
+<form id="form">
+
+    <div class="am-tabs am-margin" data-am-tabs>
+      <ul class="am-tabs-nav am-nav am-nav-tabs">
+        <li class="am-active"><a href="#tab1">基本信息</a></li>
+        <li><a href="#tab2">SEO 选项</a></li>
+      </ul>
+
+      <div class="am-tabs-bd">
+        <div class="am-tab-panel am-fade am-in am-active" id="tab1">
+          <div class="am-g am-margin-top">
+            <div class="am-u-sm-4 am-u-md-2 am-text-right">站点状态</div>
+            <div class="am-u-sm-8 am-u-md-10">
+              <div class="am-btn-group" data-am-button>
+                <label class="am-btn am-btn-default am-btn-xs">
+                  <input type="radio" name="status" value="0" {{ site.status==0 ? 'checked' : ''}}> 启动
+                </label>
+                <label class="am-btn am-btn-default am-btn-xs">
+                  <input type="radio" name="status" value="1" {{ site.status==1 ? 'checked' : ''}}> 关闭
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div class="am-g am-margin-top">
+            <div class="am-u-sm-4 am-u-md-2 am-text-right">用户注册</div>
+            <div class="am-u-sm-8 am-u-md-10">
+              <select name="reg" data-am-selected="{maxHeight: 100}">
+                <option value="-1" {{ site.reg==-1 ? 'selected' : ''}}>关闭注册</option>
+                <option value="0" {{ site.reg==0 ? 'selected' : ''}}>普通注册</option>
+                <option value="1" {{ site.reg==1 ? 'selected' : ''}}>短信注册</option>
+                <option value="2" {{ site.reg==2 ? 'selected' : ''}}>邮箱注册</option>
+                <option value="3" {{ site.reg==3 ? 'selected' : ''}}>普通+短信注册</option>
+                <option value="4" {{ site.reg==4 ? 'selected' : ''}}>普通+邮箱注册</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="am-g am-margin-top">
+            <div class="am-u-sm-4 am-u-md-2 am-text-right">
+              站点名称
+            </div>
+            <div class="am-u-sm-8 am-u-md-10">
+              <div class="am-form-group">
+                <input type="text" class="am-form-field am-input-sm" name="title" value="{{ site.title }}">
+              </div>
+            </div>
+          </div>
+
+          <div class="am-g am-margin-top">
+            <div class="am-u-sm-4 am-u-md-2 am-text-right">
+              备案号
+            </div>
+            <div class="am-u-sm-8 am-u-md-10">
+              <div class="am-form-group">
+                <input type="text" class="am-form-field am-input-sm" name="icp" value="{{ site.icp }}">
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="am-tab-panel am-fade" id="tab2">
+            <div class="am-g am-margin-top-sm">
+              <div class="am-u-sm-4 am-u-md-2 am-text-right">
+                SEO 关键字
+              </div>
+              <div class="am-u-sm-8 am-u-md-4 am-u-end">
+                <textarea name="seo_keywords" rows="4">{{ site.keywords }}</textarea>
+              </div>
+            </div>
+
+            <div class="am-g am-margin-top-sm">
+              <div class="am-u-sm-4 am-u-md-2 am-text-right">
+                SEO 描述
+              </div>
+              <div class="am-u-sm-8 am-u-md-4 am-u-end">
+                <textarea name="seo_description" rows="4">{{ site.description }}</textarea>
+              </div>
+            </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="am-margin">
+      <button type="submit" class="am-btn am-btn-primary am-btn-xs">提交保存</button>
+    </div>
+</form>
+{% endblock %}

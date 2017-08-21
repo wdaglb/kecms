@@ -1,37 +1,86 @@
-{% extends 'layout.html' %}
-{% block title %}登录后台{% endblock %}
-{% block body %}
-    <div style="width: 500px;margin: 0 auto">
-        <div class="panel">
-            <div class="panel-head border-sub bg-sub"><h1>后台登录</h1></div>
-            <div class="panel-body">
-                <form id="form" method="post" class="form">
-                    <div class="form-group">
-                        <div class="label">
-                            <label for="usr">登录账号</label>
-                        </div>
-                        <div class="field">
-                            <input type="text" class="input" id="usr" name="usr" placeholder="请输入管理帐号" data-validate="required:请输入管理帐号" />
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="label">
-                            <label for="pmd">登录密码</label>
-                        </div>
-                        <div class="field">
-                            <input type="text" class="input" id="pmd" name="pmd" placeholder="帐号对应的密钥" data-validate="required:请输入帐号对应的密钥" />
-                        </div>
-                    </div>
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>KECMS后台登录</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <link rel="stylesheet" href="{{ assets('/amaze/css/amazeui.min.css') }}"/>
+  <style>
+    .header {
+      text-align: center;
+    }
+    .header h1 {
+      font-size: 200%;
+      color: #333;
+      margin-top: 30px;
+    }
+    .header p {
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+<div class="header">
+  <div class="am-g">
+    <h1>KECMS 后台登录</h1>
+  </div>
+  <hr />
+</div>
+<div class="am-g">
+  <div class="am-u-lg-6 am-u-md-8 am-u-sm-centered">
 
-                    <div class="form-button">
-                        <button class="button" type="submit">登录</button>
-                        <p class="text-muted text-right">
-                            <a href="{{ url('admin.reset') }}"><small>忘记密码了？</small></a>
-                        </p>
-                    </div>
-                </form>
-            </div>
-            <div class="panel-foot">版权所有@ KECMS <a href="http://cms.iydou.cn/">http://cms.iydou.cn/</a></div>
-        </div>
+    <form id="form" class="am-form">
+      <label for="text">管理帐号:</label>
+      <input type="text" name="usr" id="text" value="">
+      <br>
+      <label for="password">密码:</label>
+      <input type="password" name="pmd" id="password" value="">
+      <br>
+      <div class="am-cf">
+        <input type="submit" name="" value="登 录" class="am-btn am-btn-primary am-btn-sm am-fl">
+        <a href="{{ url('admin.reset') }}" name="" value=" " class="am-btn am-btn-default am-btn-sm am-fr">忘记密码 ^_^?</a>
+      </div>
+      <input type="hidden" name="_token_" value="{{ csrf_token }}">
+    </form>
+    <hr>
+    <p>© 2017 Copyright to <a href="http://cms.iydou.cn/">KECMS</a></p>
+  </div>
+</div>
+</body>
+<div class="am-modal am-modal-alert" tabindex="-1" id="my-alert">
+  <div class="am-modal-dialog">
+    <div class="am-modal-hd" id="message"></div>
+    <div class="am-modal-footer">
+      <span class="am-modal-btn">确定</span>
     </div>
-{% endblock %}
+  </div>
+</div>
+<script type="text/javascript" src="{{ assets('/js/jquery.min.js') }}"></script>
+<script src="{{ assets('/amaze/js/amazeui.min.js') }}"></script>
+<script type="text/javascript">
+$(function() {
+    var $modal = $('#my-alert');
+    $('#form').submit(function(){
+        $.ajax({
+            type:'post',
+            data:$(this).serialize(),
+            datatype:'json',
+            success:function(data){
+                if(data.code==0){
+                    location.href=data.result.url;
+                }else{
+                    $('#message').html(data.message);
+                    $modal.modal('toggle');
+                }
+            }
+        });
+        return false;
+    });
+
+  });
+</script>
+</html>

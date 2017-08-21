@@ -12,4 +12,10 @@ Route::group(['namespace'=>'admin'],function(){
     Route::any('/admin/reset',['as'=>'admin.reset','uses'=>'IndexController@reset']);
     // 登出系统
     Route::any('/admin/logout',['as'=>'admin.logout','uses'=>'IndexController@logout']);
+    // 设置
+    Route::any('/admin/setting',['as'=>'admin.setting','uses'=>'IndexController@setting']);
+    // 绑定域名
+    Route::get('/admin/bindDomain',['as'=>'admin.domain','uses'=>'IndexController@domain']);
+    	// 绑定域名
+    	Route::any('/admin/bindDomain.post',['as'=>'admin.domain.bind','uses'=>'IndexController@domainBind']);
 });

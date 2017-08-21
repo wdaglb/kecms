@@ -41,6 +41,8 @@ class Controller extends \ke\Controller
         if(!$user){
             return $this->error('权限不足,请先登录系统',url('adminlogin'));
         }
+        if($user['siteid']==='') throw new Exception('你的站点数据库存在错误');
+        
         $this->assign('user',$user);
     }
 

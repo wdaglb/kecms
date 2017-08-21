@@ -1,6 +1,11 @@
 define(function(){
 	var model={};
 
+	model.reload=function(){
+		var $id=top.$('[name="main"]');
+		$id.prop('src',location.href);
+	}
+
 	model.Ajax=function(option,loading){
 		if(loading===undefined || loading==true){
 			//$.showPreloader();

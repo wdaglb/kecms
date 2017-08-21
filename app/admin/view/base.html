@@ -8,15 +8,19 @@
   <link rel="stylesheet" href="{{ assets('/amaze/css/amazeui.min.css') }}">
   <link rel="stylesheet" href="{{ assets('/amaze/css/admin.css') }}">
 
-  <title>{% block title %}default{% endblock %} - KECMS</title>
+  <title>KECMS后台管理</title>
 </head>
 <body>
+<!--[if lte IE 9]>
+<p class="browsehappy">你正在使用<strong>过时</strong>的浏览器。 请 <a href="http://browsehappy.com/" target="_blank">升级浏览器</a>
+  以获得更好的体验！</p>
+<![endif]-->
 {% block body %}{% endblock %}</body>
 <!--[if lte IE 8 ]>
 <script src="{{ assets('/amaze/js/amazeui.ie8polyfill.min.js') }}"></script>
 <![endif]-->
 <script type="text/javascript" src="{{ assets('/js/jquery.min.js') }}"></script>
-<script src="{{ assets('/amaze/js/amazeui.min.js') }}"></script>
 <script type="text/javascript" src="{{ assets('/js/require.js') }}"></script>
-<script type="text/javascript">var web_path='{{ __WEB_PATH__ }}';var token='{{ csrf_token }}';require.config({urlArgs: "v=" +  (new Date()).getTime(),baseUrl:web_path+'/../modules'});require(['{{ ct }}']);</script>
+<script src="{{ assets('/amaze/js/amazeui.min.js') }}"></script>
+<script type="text/javascript">var web_path='{{ __WEB_PATH__ }}';var token='{{ csrf_token }}';require.config({baseUrl:web_path+'/../modules'});require(['{{ ct }}']);</script>
 </html>
