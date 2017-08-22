@@ -13,7 +13,7 @@ class Admin extends Model
 
     private $info=[];
 
-    private $site=[];
+    private $config=[];
     
     /**
      * 取错误信息 如果有的话
@@ -43,10 +43,9 @@ class Admin extends Model
      */
     public function getSiteInfo()
     {
-        if($this->info['siteid']==='') throw new Exception('您的站点数据库存在错误,请联系管理员.');
-        if(!empty($this->site)) return $this->site;
-        $this->site=$this->first('site',['id'=>$this->info['siteid']]);
-        return $this->site;
+        if(!empty($this->config)) return $this->config;
+        $this->config=$this->first('config',['id'=>$this->info['useConfig']]);
+        return $this->config;
     }
 
     /**

@@ -11,7 +11,10 @@
   <title>{% block title %}default{% endblock %} - KECMS</title>
 </head>
 <body>
-{% block body %}{% endblock %}</body>
+<div style="overflow: auto;display: block;height: 100%">
+{% block body %}{% endblock %}
+</div>
+</body>
 <!--[if lte IE 8 ]>
 <script src="{{ assets('/amaze/js/amazeui.ie8polyfill.min.js') }}"></script>
 <![endif]-->

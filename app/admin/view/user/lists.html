@@ -1,0 +1,46 @@
+{% extends 'layout.html' %}
+{% block body %}
+<form action="" class="am-form-inline am-margin" id="form">
+  <div class="am-form-group">
+    <input type="text" class="am-form-field" name="domain" placeholder="搜索Uid,用户名,昵称">
+  </div>
+  <button type="submit" class="am-btn am-btn-secondary">搜索</button>
+</form>
+<table class="am-table am-table-hover">
+    <thead>
+        <tr>
+            <th>Uid</th>
+            <th>用户名</th>
+            <th>昵称</th>
+            <th>性别</th>
+            <th>年龄</th>
+            <th>注册时间</th>
+            <th>最后活跃</th>
+            <th width="120">操作</th>
+        </tr>
+    </thead>
+    <tbody>
+      {% for item in list %}
+        <tr>
+            <td>{{ item.id }}</td>
+            <td>{{ item.username }}</td>
+            <td>{{ item.nickname }}</td>
+            <td>{{ item.sex ? '男' : '女' }}</td>
+            <td>{{ item.age }}</td>
+            <td>{{ item.reg_time|date('Y-m-d') }}</td>
+            <td>
+            {% if item.up_time %}
+            {{ item.up_time|date('Y-m-d') }}
+            {% else %}
+            从未活跃
+            {% endif %}
+            </td>
+            <td>
+              <a class="am-btn am-btn-secondary am-btn-xs" href="{{ url('admin.user.edit',{'id':item.id}) }}">编辑</a>
+              <a class="am-btn am-btn-danger am-btn-xs" href="{{ url('admin.user.delete',{'id':item.id}) }}">删除</a>
+            </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

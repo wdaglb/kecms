@@ -13,7 +13,11 @@
     <title>Title</title>
 </head>
 <body>
-<a href="{{ url('admin') }}">admin</a>
-<a href="{{ url('register') }}">注册会员</a>
+<form method="post">
+	<p>帐号:<input type="text" name="username"></p>
+	<p>昵称:<input type="text" name="nickname"></p>
+	<p>密码:<input type="text" name="password"></p>
+	<button type="submit">确定注册</button>
+</form>
 </body>
 </html>

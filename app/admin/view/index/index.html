@@ -72,7 +72,6 @@
           <a class="am-cf head" data-am-collapse="{target: '#collapse-sys'}">系统 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
           <ul class="am-list am-collapse admin-sidebar-sub am-in" id="collapse-sys">
             <li><a target="main" href="{{ url('admin.setting') }}" class="am-cf">站点设置</a></li>
-            <li><a target="main" href="{{ url('admin.domain') }}" class="am-cf">域名绑定</a></li>
             <li><a target="main" href="{{ url('admin.data') }}" class="am-cf">数据管理</a></li>
           </ul>
         </li>
@@ -81,11 +80,17 @@
     </div>
   </div>
   <!-- sidebar end -->
-    <div class="admin-content">
-      <div class="admin-content-body">
-        <iframe name="main" scrolling="yes" src="{{ url('admin/home') }}" style="width: 100%;height: 98%"></iframe>
-      </div>
+
+  <!-- content start -->
+  <div class="admin-content">
+    <div class="admin-content-body" style="height: 100%;display: block;overflow: hidden;">
+
+        <iframe name="main" src="{{ url('admin/home') }}" style="width: 100%;height: 100%"></iframe>
+
     </div>
+
+  </div>
+  <!-- content end -->
 </body>
 <!--[if lte IE 8 ]>
 <script src="{{ assets('/amaze/js/amazeui.ie8polyfill.min.js') }}"></script>

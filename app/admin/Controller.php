@@ -7,6 +7,7 @@
 namespace app\admin;
 
 
+use ke\DB;
 use ke\Exception;
 use ke\Request;
 
@@ -41,9 +42,15 @@ class Controller extends \ke\Controller
         if(!$user){
             return $this->error('权限不足,请先登录系统',url('adminlogin'));
         }
-        if($user['siteid']==='') throw new Exception('你的站点数据库存在错误');
-        
-        $this->assign('user',$user);
+
+        // 初始化站点配置
+        if($user['useConfig']==0 || !DB::first('config',['id'=>$user['useConfig']])){
+            $site=DB::query('SELECT id FROM `:config` ORDER BY `id` ASC')->fetchColumn();
+            if(empty($site)){
+                DB::create('config',['title'=>'默认站点']);
+                DB::update('admin',['id'=>$user['id']],['useConfig'=>DB::getLastInsertId()]);
+            }
+        }
     }
 
 }

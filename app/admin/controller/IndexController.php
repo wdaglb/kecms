@@ -108,11 +108,8 @@ class IndexController extends Controller
             if(!$vali->check($form)){
                 return $this->json(1,$vali->getError());
             }
-            $user=m('admin')->getInfo('siteid');
-            if(!DB::first('site',['id'=>$user])){
-                return $this->json(1,"你的站点数据库存在错误[{$user}]");
-            }
-            if(DB::update('site',['id'=>$user],[
+            $user=m('admin')->getInfo('useConfig');
+            if(DB::update('config',['id'=>$user],[
                 'title'=>$form['title'],
                 'status'=>isset($form['status']) ? $form['status'] : 0,
                 'reg'=>isset($form['reg']) ? $form['reg'] : 0,
@@ -130,37 +127,5 @@ class IndexController extends Controller
         return $this->render();
     }
 
-    // 域名绑定
-    public function domain()
-    {
-        $siteid=m('admin')->getInfo('siteid');
-        $list=DB::all('domain',['siteid'=>$siteid]);
-        $this->assign('list',$list);
-        return $this->render();
-    }
-    public function domainBind()
-    {
-        $form=post('domain');
-        if($form=='') return $this->json(1,'请输入需要绑定的域名');
-        // 检测是否合格域名
-        if(!preg_match('/[a-z]+\.[a-z]+/',$form)){
-            return $this->json(1,'请输入正确的域名');
-        }
-
-        $siteid=m('admin')->getInfo('siteid');
-        if(!DB::first('site',['id'=>$siteid])){
-            return $this->json(1,"站点不存在或已被删除[{$siteid}]");
-        }
-        if(DB::first('domain',['src'=>$form])){
-            return $this->json(1,'该域名已经被绑定了,请先解绑该域名.');
-        }
-        if(DB::create('domain',['siteid'=>$siteid,'src'=>$form,'create_time'=>$_SERVER['REQUEST_TIME']])){
-            return $this->json(0,'域名绑定成功');
-        }else{
-            return $this->json(1,'域名绑定失败');
-        }
-
-
-    }
 
 }

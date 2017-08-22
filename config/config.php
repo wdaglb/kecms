@@ -6,6 +6,7 @@
  */
 
 return [
+
     // 是否开启域名根
     'url_domain_root'=>true,
     
@@ -19,7 +20,7 @@ return [
     'is_tpl_controller'=>true,
 
     // 加载扩展配置
-    'loader_conf'=>['database'],
+    'loader_conf'=>['database','admin'],
 
     // 缓存配置
     'cache'=>[

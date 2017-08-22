@@ -1,6 +1,5 @@
 {% extends 'layout.html' %}
 {% block body %}
-<div class="am-container">
 <form action="{{ url('admin.domain.bind') }}" class="am-form-inline am-margin" id="form">
   <div class="am-form-group">
     <input type="text" class="am-form-field" name="domain" placeholder="输入域名,不需要带http">
@@ -24,70 +23,6 @@
             <td>{{ item.status==0 ? '正常' : '禁用' }}</td>
         </tr>
       {% endfor %}
-      {% for item in list %}
-        <tr>
-            <td>{{ item.src }}</td>
-            <td>{{ item.create_time|date('Y-m-d') }}</td>
-            <td>{{ item.status==0 ? '正常' : '禁用' }}</td>
-        </tr>
-      {% endfor %}
-      {% for item in list %}
-        <tr>
-            <td>{{ item.src }}</td>
-            <td>{{ item.create_time|date('Y-m-d') }}</td>
-            <td>{{ item.status==0 ? '正常' : '禁用' }}</td>
-        </tr>
-      {% endfor %}
-      {% for item in list %}
-        <tr>
-            <td>{{ item.src }}</td>
-            <td>{{ item.create_time|date('Y-m-d') }}</td>
-            <td>{{ item.status==0 ? '正常' : '禁用' }}</td>
-        </tr>
-      {% endfor %}
-      {% for item in list %}
-        <tr>
-            <td>{{ item.src }}</td>
-            <td>{{ item.create_time|date('Y-m-d') }}</td>
-            <td>{{ item.status==0 ? '正常' : '禁用' }}</td>
-        </tr>
-      {% endfor %}
-      {% for item in list %}
-        <tr>
-            <td>{{ item.src }}</td>
-            <td>{{ item.create_time|date('Y-m-d') }}</td>
-            <td>{{ item.status==0 ? '正常' : '禁用' }}</td>
-        </tr>
-      {% endfor %}
-      {% for item in list %}
-        <tr>
-            <td>{{ item.src }}</td>
-            <td>{{ item.create_time|date('Y-m-d') }}</td>
-            <td>{{ item.status==0 ? '正常' : '禁用' }}</td>
-        </tr>
-      {% endfor %}
-      {% for item in list %}
-        <tr>
-            <td>{{ item.src }}</td>
-            <td>{{ item.create_time|date('Y-m-d') }}</td>
-            <td>{{ item.status==0 ? '正常' : '禁用' }}</td>
-        </tr>
-      {% endfor %}
-      {% for item in list %}
-        <tr>
-            <td>{{ item.src }}</td>
-            <td>{{ item.create_time|date('Y-m-d') }}</td>
-            <td>{{ item.status==0 ? '正常' : '禁用' }}</td>
-        </tr>
-      {% endfor %}
-      {% for item in list %}
-        <tr>
-            <td>{{ item.src }}</td>
-            <td>{{ item.create_time|date('Y-m-d') }}</td>
-            <td>{{ item.status==0 ? '正常' : '禁用' }}</td>
-        </tr>
-      {% endfor %}
     </tbody>
 </table>
-</div>
 {% endblock %}
