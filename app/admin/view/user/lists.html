@@ -1,8 +1,8 @@
 {% extends 'layout.html' %}
 {% block body %}
-<form action="" class="am-form-inline am-margin" id="form">
+<form action="" method="get" class="am-form-inline am-margin" id="form">
   <div class="am-form-group">
-    <input type="text" class="am-form-field" name="domain" placeholder="搜索Uid,用户名,昵称">
+    <input type="text" class="am-form-field" name="key" placeholder="搜索Uid,用户名,昵称" value="{{ search.key }}">
   </div>
   <button type="submit" class="am-btn am-btn-secondary">搜索</button>
 </form>
