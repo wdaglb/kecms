@@ -1,0 +1,308 @@
+html, body, p, ul, li, iframe {
+  margin: 0;
+  padding: 0;
+  list-style: none; }
+
+html, body {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  font-family: "Segoe UI", "Lucida Grande", Helvetica, Arial, "Microsoft YaHei", FreeSans, Arimo, "Droid Sans", "wenquanyi micro hei", "Hiragino Sans GB", "Hiragino Sans GB W3", "FontAwesome", sans-serif;
+  font-weight: normal;
+  line-height: 1.6;
+  color: #333333;
+  font-size: 1.6rem; }
+
+a {
+  color: #e08;
+  text-decoration: none; }
+
+
+// 浮层
+.ke-tip {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #000;
+  background: rgba(0, 0, 0, 0.7);
+  .ke-tip-dia {
+    position: fixed;
+    z-index: 9999;
+    min-width: 400px;
+    background: #fff;
+    border: solid 1px #dddddd;
+    text-align: center;
+    h3 {
+      padding: 10px;
+      margin: 0;
+    }
+  }
+  .ke-tip .ke-tip-message {
+    padding: 10px;
+    display: block;
+  }
+  .ke-tip-btn-group {
+    margin-top:10px;
+    list-style: none;
+    display: -webkit-flex;
+    display: flex;
+    border: solid 1px #ddd;
+    li {
+      flex: 1;
+      span {
+        display: block;
+        padding: 10px;
+        border: none;
+        background: #fff;
+        cursor: pointer;
+      }
+    }
+    li + li {
+      border-left: solid 1px #ddd;
+    }
+  }
+}
+.margin {
+  margin: 5px 15px 5px 15px; }
+
+// 顶栏
+.top {
+  color: #fff;
+  background: #0E90D2;
+  padding: 10px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box; }
+
+.layout {
+  overflow: hidden;
+  position: absolute;
+  margin: auto;
+  top: 61px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  .layout-content {
+    position: relative;
+    height: 100%;
+  }
+}
+// 侧栏
+.sidebar {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 200px;
+  border: solid 1px #e3e3e3;
+  font-size: 1.2rem;
+  li + li {
+    border-top: solid 1px #e3e3e3;
+  }
+  .sidebar-head {
+    background: #eee;
+    a {
+      padding: 10px 15px 10px 15px;
+      display: block;
+    }
+  }
+  .sidebar-sub {
+    background: #fff;
+    a {
+      padding: 10px 15px 10px 15px;
+      display: block;
+    }
+  }
+}
+// 内容框架
+.content {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 200px;
+  right: 0;
+  border: solid 1px #e3e3e3;
+  iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+}
+
+.padding-sm {
+  padding: 10px 20px 10px 20px; }
+
+.padding-xs {
+  padding: 5px; }
+
+.text-primary {
+  display: block;
+  color: #fff;
+  background: #93D2E7;
+  font-size: 0.8em;
+}
+
+// 选项卡
+.tabs {
+  margin: 8px;
+  .tabs-head {
+    font-size: 0.8em;
+    z-index: 2;
+    li {
+      display: inline-block;
+      padding: 8px 15px 8px 15px;
+    }
+    li:hover {
+      cursor: pointer;
+    }
+    li.active {
+      border: solid 1px #e3e3e3;
+      border-bottom: none;
+      background: #fff;
+    }
+  }
+  .tabs-body {
+    margin-top: -2px;
+    z-index: 1;
+    border: solid 1px #e3e3e3;
+  }
+}
+// 搜索框
+.form-search{
+  width: 300px;
+  .ser-cont{
+    padding:8px;
+    position: relative;
+    .input{
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+      font-size: 0.6em;
+      display: inline-block;
+      border:solid 1px #ddd;
+      border-radius: 4px;
+      padding:8px;
+      color: #D7A777;
+      width: 100%;
+    }
+    .ser-btn{
+      position: absolute;
+      top: 17px;
+      right: 9px;
+      color: #ccc;
+      font-size: 0.6em;
+      background: #fff;
+      display: inline-block;
+      border:none;
+      border-left:solid 1px #ddd;
+      padding:6px 8px 6px 8px;
+    }
+  }
+}
+.form-inline {
+  margin: 5px;
+  font-size: 0.8em;
+  display: flex;
+  .label {
+    text-align: right;
+    flex: 0 150px;
+    display: inline-block;
+  }
+  .input-c{
+    padding: 5px;
+    font-size: 0.8em;
+  }
+  .input {
+    margin-left: 10px;
+    padding: 5px;
+    flex: 1 1 auto;
+    display: inline-block;
+    border: solid 1px #ddd;
+    border-radius: 4px;
+  }
+}
+
+.form-group {
+  margin: 5px;
+  font-size: 0.8em;
+  .label {
+    display: block;
+  }
+  .input {
+    padding: 5px;
+    display: block;
+    border: solid 1px #ddd;
+    border-radius: 4px;
+  }
+  .textarea {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 5px;
+    display: block;
+    border: solid 1px #ddd;
+    border-radius: 4px;
+  }
+}
+
+// 按钮
+.button {
+  display: inline-block;
+  border: solid 1px #ddd;
+  padding: 8px 15px 8px 15px;
+  background: #fff;
+  border-radius: 4px;
+}
+.btn{
+  display: inline-block;
+  font-size: 0.7em;
+  padding:2px 8px 2px 8px;
+  border: none;
+}
+.btn-sm{
+  padding:6px 16px 6px 16px;
+}
+.btn-default{
+  color: #fff;
+  background: #0E90D2;
+}
+.btn-primary{
+  color: #fff;
+  background: #3BB4F2;
+}
+.btn-secondary{
+  color:#fff;
+  background: #5EB95E;
+}
+.btn-danger{
+  color:#fff;
+  background: #F37B1D;
+}
+// 容器
+.container{
+  margin:0 10px 0 10px;
+}
+// 表格
+.table{
+  width: 100%;
+  font-size: 0.8em;
+  margin-bottom: 1.6rem;
+  border-spacing: 0;
+  border-collapse: collapse;
+  thead{
+    tr{
+      text-align: left;
+      border-bottom: solid 1px #ddd;
+    }
+  }
+  tbody{
+    tr+tr{
+      border-top: solid 1px #ddd;
+    }
+  }
+}
+

@@ -5,8 +5,8 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-  <link rel="stylesheet" href="{{ assets('/amaze/css/amazeui.min.css') }}">
-  <link rel="stylesheet" href="{{ assets('/amaze/css/admin.css') }}">
+  <link rel="stylesheet" href="{{ assets('/admin/css/style.css') }}">
+  <link rel="stylesheet" href="{{ assets('/fonts/css/font-awesome.min.css') }}">
 
   <title>KECMS后台管理</title>
 </head>
@@ -15,89 +15,64 @@
 <p class="browsehappy">你正在使用<strong>过时</strong>的浏览器。 请 <a href="http://browsehappy.com/" target="_blank">升级浏览器</a>
   以获得更好的体验！</p>
 <![endif]-->
-<header class="am-topbar am-topbar-inverse admin-header">
-  <div class="am-topbar-brand">
-    <strong>KECMS</strong> <small>后台管理</small>
-  </div>
-
-  <div class="am-collapse am-topbar-collapse" id="topbar-collapse">
-
-    <ul class="am-nav am-nav-pills am-topbar-nav am-topbar-right admin-header-list">
-      <li><a href="javascript:;"><span class="am-icon-envelope-o"></span> 收件箱 <span class="am-badge am-badge-warning">5</span></a></li>
-      <li class="am-dropdown" data-am-dropdown>
-        <a class="am-dropdown-toggle" data-am-dropdown-toggle href="javascript:;">
-          <span class="am-icon-users"></span> 管理员 <span class="am-icon-caret-down"></span>
-        </a>
-        <ul class="am-dropdown-content">
-          <li><a href="#"><span class="am-icon-user"></span> 资料</a></li>
-          <li><a href="#"><span class="am-icon-cog"></span> 设置</a></li>
-          <li><a href="#"><span class="am-icon-power-off"></span> 退出</a></li>
-        </ul>
-      </li>
-    </ul>
-  </div>
+<header class="top">
+  <strong>KECMS</strong> <small>后台管理</small>
 </header>
 
-<div class="am-cf admin-main">
-  <!-- sidebar start -->
-  <div class="admin-sidebar am-offcanvas" id="admin-offcanvas">
-    <div class="am-offcanvas-bar admin-offcanvas-bar">
-      <ul class="am-list admin-sidebar-list">
-        <li><a target="main" href="{{ url('admin.home') }}">首页</a></li>
+<div class="layout">
+  <div class="layout-content">
+    <!-- sidebar start -->
+    <div class="sidebar">
+      <ul>
+        <li class="sidebar-head">
+          <a target="main" href="{{ url('admin.home') }}">首页&nbsp;<i class="fa fa-lg fa-angle-right" style="margin-left:110px;"></i></a>
+        </li>
 
-        <li class="admin-parent">
-          <a class="am-cf head" data-am-collapse="{target: '#collapse-nav'}">会员 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
-          <ul class="am-list am-collapse admin-sidebar-sub am-in" id="collapse-nav">
-            <li><a target="main" href="{{ url('admin.user') }}" class="am-cf">会员管理</a></li>
+        <li class="sidebar-head">
+          <a href="javascript:void(0);">会员&nbsp;<i class="fa fa-lg fa-angle-right" style="margin-left:110px;"></i></a>
+          <ul class="sidebar-sub">
+            <li><a target="main" href="{{ url('admin.user') }}">会员管理</a></li>
           </ul>
         </li>
 
-        <li class="admin-parent">
-          <a class="am-cf head" data-am-collapse="{target: '#collapse-cont'}">内容 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
-          <ul class="am-list am-collapse admin-sidebar-sub am-in" id="collapse-cont">
-            <li><a target="main" href="{{ url('admin.article') }}" class="am-cf">文章管理</a></li>
-            <li><a target="main" href="{{ url('admin.images') }}" class="am-cf">图片管理</a></li>
+        <li class="sidebar-head">
+          <a href="javascript:void(0);">内容&nbsp;<i class="fa fa-lg fa-angle-right" style="margin-left:110px;"></i></a>
+          <ul class="sidebar-sub">
+            <li><a target="main" href="{{ url('admin.article') }}">文章管理</a></li>
+            <li><a target="main" href="{{ url('admin.images') }}">图片管理</a></li>
           </ul>
         </li>
 
-        <li class="admin-parent">
-          <a class="am-cf head" data-am-collapse="{target: '#collapse-run'}">运营 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
-          <ul class="am-list am-collapse admin-sidebar-sub am-in" id="collapse-run">
-            <li><a target="main" href="{{ url('admin.link') }}" class="am-cf">友情链接</a></li>
-            <li><a target="main" href="{{ url('admin.images') }}" class="am-cf">广告模块</a></li>
+        <li class="sidebar-head">
+          <a href="javascript:void(0);">运营&nbsp;<i class="fa fa-lg fa-angle-right" style="margin-left:110px;"></i></a>
+          <ul class="sidebar-sub">
+            <li><a target="main" href="{{ url('admin.link') }}">友情链接</a></li>
+            <li><a target="main" href="{{ url('admin.images') }}">广告模块</a></li>
           </ul>
         </li>
 
-        <li class="admin-parent">
-          <a class="am-cf head" data-am-collapse="{target: '#collapse-sys'}">系统 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
-          <ul class="am-list am-collapse admin-sidebar-sub am-in" id="collapse-sys">
-            <li><a target="main" href="{{ url('admin.setting') }}" class="am-cf">站点设置</a></li>
-            <li><a target="main" href="{{ url('admin.data') }}" class="am-cf">数据管理</a></li>
+        <li class="sidebar-head">
+          <a href="javascript:void(0);">系统&nbsp;<i class="fa fa-lg fa-angle-right" style="margin-left:110px;"></i></a>
+          <ul class="sidebar-sub">
+            <li><a target="main" href="{{ url('admin.setting') }}">站点设置</a></li>
+            <li><a target="main" href="{{ url('admin.data') }}">数据管理</a></li>
           </ul>
         </li>
 
       </ul>
     </div>
-  </div>
-  <!-- sidebar end -->
+    <!-- sidebar end -->
 
-  <!-- content start -->
-  <div class="admin-content">
-    <div class="admin-content-body" style="height: 100%;display: block;overflow: hidden;">
-
-        <iframe name="main" src="{{ url('admin/home') }}" style="width: 100%;height: 100%"></iframe>
-
+    <!-- content start -->
+    <div class="content">
+      <iframe name="main" src="{{ url('admin/home') }}"></iframe>
     </div>
 
+    <!-- content end -->
   </div>
-  <!-- content end -->
+</div>
 </body>
-<!--[if lte IE 8 ]>
-<script src="{{ assets('/amaze/js/amazeui.ie8polyfill.min.js') }}"></script>
-<![endif]-->
-
 <script type="text/javascript" src="{{ assets('/js/jquery.min.js') }}"></script>
-<script src="{{ assets('/amaze/js/amazeui.min.js') }}"></script>
 <script type="text/javascript" src="{{ assets('/js/require.js') }}"></script>
 <script type="text/javascript">var web_path='{{ __WEB_PATH__ }}';var token='{{ csrf_token }}';require.config({baseUrl:web_path+'/../modules'});require(['{{ ct }}']);</script>
 </html>

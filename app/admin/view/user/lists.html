@@ -1,12 +1,13 @@
 {% extends 'layout.html' %}
+{% block title %}会员管理{% endblock %}
 {% block body %}
-<form action="" method="get" class="am-form-inline am-margin" id="form">
-  <div class="am-form-group">
-    <input type="text" class="am-form-field" name="key" placeholder="搜索Uid,用户名,昵称" value="{{ search.key }}">
+<form action="" method="get" class="form-search" id="form">
+  <div class="ser-cont">
+    <input type="text" class="input" name="key" placeholder="搜索Uid,用户名,昵称" value="{{ search.key }}">
+      <button type="submit" class="ser-btn">搜索</button>
   </div>
-  <button type="submit" class="am-btn am-btn-secondary">搜索</button>
 </form>
-<table class="am-table am-table-hover">
+<table class="table">
     <thead>
         <tr>
             <th>Uid</th>
@@ -20,7 +21,7 @@
         </tr>
     </thead>
     <tbody>
-      {% for item in list %}
+    {% for item in list %}
         <tr>
             <td>{{ item.id }}</td>
             <td>{{ item.username }}</td>
@@ -29,18 +30,18 @@
             <td>{{ item.age }}</td>
             <td>{{ item.reg_time|date('Y-m-d') }}</td>
             <td>
-            {% if item.up_time %}
-            {{ item.up_time|date('Y-m-d') }}
-            {% else %}
-            从未活跃
-            {% endif %}
+                {% if item.up_time %}
+                    {{ item.up_time|date('Y-m-d') }}
+                {% else %}
+                    从未活跃
+                {% endif %}
             </td>
             <td>
-              <a class="am-btn am-btn-secondary am-btn-xs" href="{{ url('admin.user.edit',{'id':item.id}) }}">编辑</a>
-              <a class="am-btn am-btn-danger am-btn-xs" href="{{ url('admin.user.delete',{'id':item.id}) }}">删除</a>
+                <a class="btn btn-secondary" href="{{ url('admin.user.edit',{'id':item.id}) }}">编辑</a>
+                <a class="btn btn-danger" href="{{ url('admin.user.delete',{'id':item.id}) }}">删除</a>
             </td>
         </tr>
-      {% endfor %}
+    {% endfor %}
     </tbody>
 </table>
 {% endblock %}

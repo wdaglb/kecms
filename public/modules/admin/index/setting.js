@@ -1,15 +1,23 @@
-define(['common'],function(c){
+define(['common','tip'],function(c,t){
+	var initTabs=function(){
+        var index=$('.tabs .tabs-head li.active').index();
+        $('.tabs .tabs-body li').hide();
+        $('.tabs .tabs-body li:eq('+index+')').show();
+	}
+	initTabs();
+
+	$('.tabs .tabs-head').on('click','li',function(){
+        $('.tabs .tabs-head li').removeClass('active');
+        $(this).addClass('active');
+        initTabs();
+	});
 	$('#form').submit(function(){
 		var $dom=$(this);
 		c.Ajax({
 			type:'post',
 			data:$dom.serialize(),
 			success:function(data){
-				$dom.before('<div class="am-alert am-alert-danger" data-am-alert><button type="button" class="am-close">&times;</button><p>'+data.message+'</p></div>');
-				var $id=$('#form').parent().find('.am-alert:last');
-				setTimeout(function(){
-					$id.alert('close');
-				},3000);
+				t.msg(data.message);
 			}
 		});
 		return false;

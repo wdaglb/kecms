@@ -5,21 +5,18 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-  <link rel="stylesheet" href="{{ assets('/amaze/css/amazeui.min.css') }}">
-  <link rel="stylesheet" href="{{ assets('/amaze/css/admin.css') }}">
+  <link rel="stylesheet" href="{{ assets('/admin/css/style.css') }}">
+  <link rel="stylesheet" href="{{ assets('/fonts/css/font-awesome.min.css') }}">
 
-  <title>{% block title %}default{% endblock %} - KECMS</title>
+  <title></title>
 </head>
 <body>
-<div style="overflow: auto;display: block;height: 100%">
-{% block body %}{% endblock %}
+<strong class="text-primary padding-xs">{% block title %}{% endblock %}</strong>
+<div class="container">
+    {% block body %}{% endblock %}
 </div>
 </body>
-<!--[if lte IE 8 ]>
-<script src="{{ assets('/amaze/js/amazeui.ie8polyfill.min.js') }}"></script>
-<![endif]-->
 <script type="text/javascript" src="{{ assets('/js/jquery.min.js') }}"></script>
-<script src="{{ assets('/amaze/js/amazeui.min.js') }}"></script>
 <script type="text/javascript" src="{{ assets('/js/require.js') }}"></script>
 <script type="text/javascript">var web_path='{{ __WEB_PATH__ }}';var token='{{ csrf_token }}';require.config({urlArgs: "v=" +  (new Date()).getTime(),baseUrl:web_path+'/../modules'});require(['{{ ct }}']);</script>
 </html>
