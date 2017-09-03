@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="{{ assets('/admin/css/style.css') }}">
   <link rel="stylesheet" href="{{ assets('/fonts/css/font-awesome.min.css') }}">
 
+
   <title>KECMS后台管理</title>
 </head>
 <body>
@@ -24,8 +25,14 @@
     <!-- sidebar start -->
     <div class="sidebar">
       <ul>
+
         <li class="sidebar-head">
-          <a target="main" href="{{ url('admin.home') }}">首页&nbsp;<i class="fa fa-lg fa-angle-right" style="margin-left:110px;"></i></a>
+          <a href="javascript:void(0);">系统&nbsp;<i class="fa fa-lg fa-angle-right" style="margin-left:110px;"></i></a>
+          <ul class="sidebar-sub">
+            <li><a target="main" href="{{ url('admin.setting') }}">站点设置</a></li>
+            <li><a target="main" href="{{ url('admin.class') }}">栏目管理</a></li>
+            <li><a target="main" href="{{ url('admin.data') }}">数据管理</a></li>
+          </ul>
         </li>
 
         <li class="sidebar-head">
@@ -48,14 +55,6 @@
           <ul class="sidebar-sub">
             <li><a target="main" href="{{ url('admin.link') }}">友情链接</a></li>
             <li><a target="main" href="{{ url('admin.images') }}">广告模块</a></li>
-          </ul>
-        </li>
-
-        <li class="sidebar-head">
-          <a href="javascript:void(0);">系统&nbsp;<i class="fa fa-lg fa-angle-right" style="margin-left:110px;"></i></a>
-          <ul class="sidebar-sub">
-            <li><a target="main" href="{{ url('admin.setting') }}">站点设置</a></li>
-            <li><a target="main" href="{{ url('admin.data') }}">数据管理</a></li>
           </ul>
         </li>
 

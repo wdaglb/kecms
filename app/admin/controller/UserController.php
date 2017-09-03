@@ -18,7 +18,7 @@ class UserController extends Controller
 
 		$key    =get('key');
 
-		$where=' WHERE 1=1';
+		$where=' WHERE `delete`=0';
 		$bind=[];
 		if($key!=''){
 			$bind['key']=$key;
@@ -72,17 +72,48 @@ class UserController extends Controller
             if(!$vali->check($form)){
                 return $this->aError($vali->getError());
             }
-            $pmd=isset($form['password']) ? $form['password'] : '';
-            $s=$vali->one($pmd,'engint|max:20',[
-                'engint'=>'密码只能为英文与数字',
-                'max'=>'密码最长为20个字符'
-            ]);
-            var_dump($s);
-            var_dump($vali->getError());
-            exit;
+            if(isset($form['password']) && $form['password']!=''){
+                $pmd=$form['password'];
+                if(!$vali->one($pmd,'engint|max:20',[
+                    'engint'=>'密码只能为英文与数字',
+                    'max'=>'密码最长为20个字符'
+                ])){
+                    return $this->aError($vali->getError());
+                }
+                $pmd=m('user')->pmd($pmd);
+            }else{
+                $pmd=$data['password'];
+            }
+            if(DB::update('users',['id'=>$data['id']],[
+                'username'=>$form['username'],
+                'nickname'=>$form['nickname'],
+                'password'=>$pmd,
+                'sex'=>empty($form['sex']) ? 0 : $form['sex'],
+                'age'=>empty($form['age']) ? 0 : $form['age'],
+            ])){
+                return $this->aSuccess('信息更新成功');
+            }else{
+                return $this->aError('修改失败');
+            }
 
         }
         $this->assign('data',$data);
         return $this->render();
+    }
+
+    // 删除
+    public function delete()
+    {
+        $id=post('id');
+        if(empty($id)) return $this->json(1,'参数错误');
+        $data=DB::query('SELECT id FROM `:users` WHERE `id`=?',$id)->fetch();
+        if(!$data){
+            return $this->json(1,'用户已不存在');
+        }
+        if(m('user')->del($id)){
+            return $this->json(0,'删除成功');
+        }else{
+            return $this->json(1,'删除失败');
+        }
     }
 }

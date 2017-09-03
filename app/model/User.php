@@ -16,22 +16,39 @@ class User extends Model
 		return md5(crypt($str,'ke'));
 	}
 
+	// 注册用户
 	public function reg($username,$nickname,$password)
 	{
-		if($this->first('users',['username'=>$username])){
+		if($this->query('SELECT id FROM `:users` WHERE `delete`=0,`username`=?',$username)){
 			$this->error='用户已存在';
-			return false;
+			return 0;
 		}
-		if($this->first('users',['nickname'=>$nickname])){
+		if($this->query('SELECT id FROM `:users` WHERE `delete`=0,`nickname`=?',$nickname)){
 			$this->error='昵称已被使用';
-			return false;
+			return 0;
 		}
-		if($this->create('users',['username'=>$username,'nickname'=>$nickname,'password'=>$this->pmd($password),'reg_time'=>$_SERVER['REQUEST_TIME']])){
-			return true;
+		// 替换插入
+		$update=['username'=>$username,'nickname'=>$nickname,'password'=>$this->pmd($password),'reg_time'=>$_SERVER['REQUEST_TIME']];
+		$replaceId=$this->query('SELECT id FROM `:users` WHERE `delete`=1 ORDER BY `id` ASC LIMIT 1')->fetchColumn();
+		if($replaceId){
+			if($this->update('users',['id'=>$replaceId],$update)){
+				return $replaceId;
+			}else{
+				$this->error='注册失败';
+				return 0;
+			}
+		}
+		if($this->create('users',$update)){
+			return $this->getLastInsertId();
 		}else{
 			$this->error='注册失败';
-			return false;
+			return 0;
 		}
+	}
 
+	// 删除用户
+	public function del($id)
+	{
+		return $this->update('users',['id'=>$id],['delete'=>1]);
 	}
 }

@@ -1,41 +1,65 @@
 {% extends 'layout.html' %}
 {% block title %}编辑信息{% endblock %}
 {% block body %}
-  <form id="form" method="post">
-    <div class="form-inline">
-        <label class="label">UID</label>
-        <input type="text" class="input" value="{{ data.id }}" disabled>
+<ol class="am-breadcrumb am-breadcrumb-slash">
+  <li><a href="{{ url('admin.home') }}" class="am-icon-home">首页</a></li>
+  <li><a href="{{ url('admin.user') }}">会员管理</a></li>
+  <li class="am-active">编辑</li>
+</ol>
+<form id="form" class="am-form am-form-horizontal">
+
+
+    <div class="am-form-group">
+      <span class="am-u-sm-1 am-form-label">UID</span>
+      <div class="am-u-sm-11">
+        <input type="text" class="am-form-field" value="{{ data.id }}" disabled>
+      </div>
     </div>
 
-      <div class="form-inline">
-          <label class="label">帐号</label>
-          <input type="text" class="input" name="username" placeholder="输入用户帐号" value="{{  data.username }}">
+    <div class="am-form-group">
+      <span class="am-u-sm-1 am-form-label">帐号</span>
+      <div class="am-u-sm-11">
+        <input type="text" class="am-form-field" name="username" placeholder="输入用户帐号" value="{{  data.username }}">
       </div>
+    </div>
 
-      <div class="form-inline">
-          <label class="label">昵称</label>
-          <input type="text" class="input" name="nickname" placeholder="输入用户昵称" value="{{  data.nickname }}">
+    <div class="am-form-group">
+      <span class="am-u-sm-1 am-form-label">昵称</span>
+      <div class="am-u-sm-11">
+        <input type="text" class="am-form-field" name="nickname" placeholder="输入用户昵称" value="{{  data.nickname }}">
       </div>
+    </div>
 
-      <div class="form-inline">
-          <label class="label">性别</label>
-          <div class="input-c">
-              <input type="radio" name="sex" value="0" {{ data.sex==0 ? 'checked' : ''}} id="sex_0">
-              <label for="sex_0">女</label>
-              <input type="radio" name="sex" value="1" {{ data.sex==1 ? 'checked' : ''}} id="sex_1">
-              <label for="sex_1">男</label>
-          </div>
+    <div class="am-form-group">
+      <span class="am-u-sm-1 am-form-label">性别</span>
+      <div class="am-u-sm-11">
+        <div class="check">
+          <label>
+            <input type="radio" name="sex" value="0"  {{ data.sex==0 ? 'checked' : ''}}>
+            女
+          </label>
+          &nbsp;
+          <label>
+            <input type="radio" name="sex" value="1" {{ data.sex==1 ? 'checked' : ''}}>
+            男
+          </label>
+        </div>
       </div>
+    </div>
 
-      <div class="form-inline">
-          <label class="label">密码</label>
-          <input type="password" class="input" name="password" placeholder="不修改请留空">
+    <div class="am-form-group">
+      <span class="am-u-sm-1 am-form-label">年龄</span>
+      <div class="am-u-sm-11">
+        <input type="text" class="am-form-field" name="age" placeholder="输入用户年龄" value="{{  data.age }}">
       </div>
-      <input type="hidden" name="_token_" value="{{ csrf_token }}">
+    </div>
 
-      <div class="form-inline">
-          <label class="label"></label>
-          <button type="submit" class="btn btn-default btn-sm" style="margin-left:10px;"> 提交保存</button>
+    <div class="am-form-group">
+      <span class="am-u-sm-1"></span>
+      <div class="am-u-sm-11">
+        <button type="submit" class="am-btn am-btn-xs am-btn-primary">提交保存</button>
       </div>
-  </form>
+    </div>
+
+</form>
 {% endblock %}

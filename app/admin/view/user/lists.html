@@ -1,13 +1,23 @@
 {% extends 'layout.html' %}
-{% block title %}会员管理{% endblock %}
 {% block body %}
-<form action="" method="get" class="form-search" id="form">
-  <div class="ser-cont">
-    <input type="text" class="input" name="key" placeholder="搜索Uid,用户名,昵称" value="{{ search.key }}">
-      <button type="submit" class="ser-btn">搜索</button>
-  </div>
-</form>
-<table class="table">
+
+<ol class="am-breadcrumb am-breadcrumb-slash">
+    <li><a href="{{ url('admin.home') }}" class="am-icon-home">首页</a></li>
+    <li class="am-active">会员管理</li>
+</ol>
+<div class="am-g">
+    <form action="" method="get" class="am-u-lg-6" id="form">
+        <div class="am-input-group">
+            <input type="text" class="am-form-field" name="key" placeholder="搜索Uid,用户名,昵称" value="{{ search.key }}">
+            <span class="am-input-group-btn">
+                <button class="am-btn am-btn-default" type="submit"><span class="am-icon-search"></span> </button>
+            </span>
+        </div>
+    </form>
+
+</div>
+
+<table class="am-table  am-margin-top">
     <thead>
         <tr>
             <th>Uid</th>
@@ -17,7 +27,7 @@
             <th>年龄</th>
             <th>注册时间</th>
             <th>最后活跃</th>
-            <th width="120">操作</th>
+            <th width="140">操作</th>
         </tr>
     </thead>
     <tbody>
@@ -26,8 +36,8 @@
             <td>{{ item.id }}</td>
             <td>{{ item.username }}</td>
             <td>{{ item.nickname }}</td>
-            <td>{{ item.sex ? '男' : '女' }}</td>
-            <td>{{ item.age }}</td>
+            <td><span class="am-badge am-badge-success">{{ item.sex ? '男' : '女' }}</span></td>
+            <td><span class="am-badge am-badge-danger">{{ item.age }}</span></td>
             <td>{{ item.reg_time|date('Y-m-d') }}</td>
             <td>
                 {% if item.up_time %}
@@ -37,8 +47,8 @@
                 {% endif %}
             </td>
             <td>
-                <a class="btn btn-secondary" href="{{ url('admin.user.edit',{'id':item.id}) }}">编辑</a>
-                <a class="btn btn-danger" href="{{ url('admin.user.delete',{'id':item.id}) }}">删除</a>
+                <a class="am-btn am-btn-xs am-btn-secondary" href="{{ url('admin.user.edit',{'id':item.id}) }}">编辑</a>
+                <a id="delete" class="am-btn am-btn-xs am-btn-danger" data-id="{{ item.id }}" data-url="{{ url('admin.user.delete') }}">删除</a>
             </td>
         </tr>
     {% endfor %}

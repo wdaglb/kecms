@@ -1,0 +1,190 @@
+{% extends 'layout.html' %}
+{% block title %}站点设置{% endblock %}
+{% block body %}
+
+
+<ol class="am-breadcrumb am-breadcrumb-slash">
+    <li><a href="{{ url('admin.home') }}" class="am-icon-home">首页</a></li>
+    <li><a href="{{ url('admin.class') }}">栏目管理</a></li>
+    <li class="am-active">{{ data ? '编辑' : '添加'}}栏目</li>
+</ol>
+<div class="am-modal am-modal-no-btn" tabindex="-1" id="select-class" data-url="{{ url('admin.class.ajax',{'id':'[id]'}) }}">
+  <div class="am-modal-dialog">
+    <div class="am-modal-hd">
+      <a href="javascript: void(0)" id="back" class="am-fl am-link-muted" style="margin-top: -0.5em"><i class="am-icon am-icon-angle-left"></i></a>
+    选择栏目
+      <a href="javascript: void(0)" class="am-close am-close-spin" data-am-modal-close>&times;</a>
+    </div>
+    <div class="am-modal-bd"><ul class="classlist am-text-left" style="overflow: auto;max-height: 500px"></ul></div>
+  </div>
+</div>
+<form id="form" class="am-form am-form-horizontal">
+
+  <div class="am-tabs" data-am-tabs="{noSwipe: 1}">
+    <ul class="am-tabs-nav am-nav am-nav-tabs">
+      <li class="am-active"><a href="javascript: void(0)">基本信息</a></li>
+      <li><a href="javascript: void(0)">权限相关</a></li>
+    </ul>
+
+    <div class="am-tabs-bd">
+      <!-- tabs1 start -->
+      <div class="am-tab-panel am-active">
+
+        <div class="am-form-group">
+          <span class="am-u-sm-1 am-form-label">上级栏目</span>
+          <div class="am-u-sm-4">
+            <input type="hidden" id="classid" name="classid" value="{{ class.id }}">
+            <input type="text" id="classname" class="input" value="{{ class.name }}" disabled>
+          </div>
+          <div class="am-u-sm-7">
+            <p class="am-padding-top-xs">
+              <label class="am-badge am-badge-primary" data-am-modal="{target: '#select-class', closeViaDimmer: 0, width: 400}">修改</label>
+            </p>
+          </div>
+        </div>
+
+        <div class="am-form-group">
+          <span class="am-u-sm-1 am-form-label">内容类型</span>
+          <div class="am-u-sm-11">
+            <select name="module" data-am-selected>
+              {% for item in module_list %}
+              <option value="{{ item.name }}" {{ site.module==item.name ? 'selected' : ''}}>{{ item.title }}</option>
+              {% endfor %}
+            </select>
+          </div>
+        </div>
+
+        <div class="am-form-group">
+          <span class="am-u-sm-1 am-form-label">栏目状态</span>
+          <div class="am-u-sm-11">
+            <select name="status" data-am-selected>
+              <option value="0" {{ data.status==0 ? 'selected' : ''}}>显示</option>
+              <option value="1" {{ data.status==1 ? 'selected' : ''}}>隐藏</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="am-form-group">
+          <span class="am-u-sm-1 am-form-label">Name</span>
+          <div class="am-u-sm-4">
+            <input type="text" class="input" name="name" value="{{ data.name }}">
+          </div>
+          <div class="am-u-sm-7">
+            <p class="am-padding-top-xs">
+            <span class="am-text-success">选填</span>&nbsp;填写时URL会显示这个值,否则为ID | 此值必须唯一
+            </p>
+          </div>
+        </div>
+
+        <div class="am-form-group">
+          <span class="am-u-sm-1 am-form-label">显示顺序</span>
+          <div class="am-u-sm-4">
+            <input type="text" class="input" name="px" value="{{ data.px }}">
+          </div>
+          <div class="am-u-sm-7">
+            <p class="am-padding-top-xs">
+            <span class="am-text-success">选填</span>&nbsp;留空时为栏目创建时间排序
+            </p>
+          </div>
+        </div>
+
+        <div class="am-form-group am-form-warning">
+          <span class="am-u-sm-1 am-form-label">栏目名称</span>
+          <div class="am-u-sm-4">
+            <input type="text" class="input" name="title" value="{{ data.title }}">
+          </div>
+          <div class="am-u-sm-7">
+            <p class="am-padding-top-xs">
+            <span class="am-text-success">必填</span>&nbsp;限制20个字符内
+            </p>
+          </div>
+        </div>
+
+        <div class="am-form-group">
+          <span class="am-u-sm-1 am-form-label">栏目内容</span>
+          <div class="am-u-sm-4">
+            <textarea class="" name="content">{{ data.content }}</textarea>
+          </div>
+          <div class="am-u-sm-7">
+            <p class="am-padding-top-xs">
+            <span class="am-text-success">选填</span>&nbsp;500个字符内
+            </p>
+          </div>
+        </div>
+
+        <div class="am-form-group">
+          <span class="am-u-sm-1 am-form-label">keywords</span>
+          <div class="am-u-sm-4">
+            <textarea class="" name="keywords">{{ data.keywords }}</textarea>
+          </div>
+          <div class="am-u-sm-7">
+            <p class="am-padding-top-xs">
+            <span class="am-text-success">选填</span>&nbsp;keywords用于搜索引擎优化，放在 meta 的 keyword 标签中，多个关键字间请用半角逗号 "," 隔开
+            </p>
+          </div>
+        </div>
+
+        <div class="am-form-group">
+          <span class="am-u-sm-1 am-form-label">description</span>
+          <div class="am-u-sm-4">
+            <textarea class="" name="description">{{ data.description }}</textarea>
+          </div>
+          <div class="am-u-sm-7">
+            <p class="am-padding-top-xs">
+            <span class="am-text-success">选填</span>&nbsp;description用于搜索引擎优化，放在 meta 的 description 标签中
+            </p>
+          </div>
+        </div>
+
+      </div>
+      <!-- tabs1 end -->
+      <!-- tabs2 start -->
+      <div class="am-tab-panel">
+
+        <div class="am-form-group">
+          <span class="am-u-sm-1 am-form-label">付费价格</span>
+          <div class="am-u-sm-4">
+            <input type="text" class="input" name="money" value="{{ data.money }}">
+          </div>
+          <div class="am-u-sm-7">
+            <p class="am-padding-top-xs">
+              <span class="am-text-success">当你设置了价格后，用户必须使用指定的交易积分付费后才可进入此版块。当价格增长时，用户还需要支付所增加的积分</span>
+            </p>
+          </div>
+        </div>
+
+        <div class="am-form-group">
+          <span class="am-u-sm-1 am-form-label">访问密码</span>
+          <div class="am-u-sm-4">
+            <input type="text" class="input" name="pass" value="{{ data.pass }}">
+          </div>
+          <div class="am-u-sm-7">
+            <p class="am-padding-top-xs">
+              <span class="am-text-success">当您设置密码后，用户必须输入密码才可以访问到此版块</span>
+            </p>
+          </div>
+        </div>
+
+        <div class="am-form-group">
+          <span class="am-u-sm-1 am-form-label">访问用户</span>
+          <div class="am-u-sm-4">
+            <textarea class="" name="user">{{ data.user }}</textarea>
+          </div>
+          <div class="am-u-sm-7">
+            <p class="am-padding-top-xs">
+              <span class="am-text-success">限定只有列表中的用户可以访问本版块，每行填写一个用户名</span>
+            </p>
+          </div>
+        </div>
+      </div>
+      <!-- tabs2 end -->
+      
+    </div>
+  </div>
+
+  <div class="am-margin">
+    <button type="submit" class="am-btn am-btn-xs am-btn-primary">提交保存</button>
+  </div>
+
+</form>
+{% endblock %}

@@ -5,18 +5,16 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-  <link rel="stylesheet" href="{{ assets('/admin/css/style.css') }}">
-  <link rel="stylesheet" href="{{ assets('/fonts/css/font-awesome.min.css') }}">
+    <link rel="stylesheet" href="{{ assets('/css/amazeui.css') }}">
+    <link rel="stylesheet" href="{{ assets('/css/app.css') }}">
 
   <title></title>
 </head>
-<body>
-<strong class="text-primary padding-xs">{% block title %}{% endblock %}</strong>
-<div class="container">
-    {% block body %}{% endblock %}
-</div>
+<body class="am-margin-horizontal">
+{% block body %}{% endblock %}
 </body>
 <script type="text/javascript" src="{{ assets('/js/jquery.min.js') }}"></script>
+<script src="{{ assets('/js/amazeui.min.js') }}"></script>
 <script type="text/javascript" src="{{ assets('/js/require.js') }}"></script>
 <script type="text/javascript">var web_path='{{ __WEB_PATH__ }}';var token='{{ csrf_token }}';require.config({urlArgs: "v=" +  (new Date()).getTime(),baseUrl:web_path+'/../modules'});require(['{{ ct }}']);</script>
 </html>

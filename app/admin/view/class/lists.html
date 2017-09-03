@@ -1,0 +1,35 @@
+{% extends 'layout.html' %}
+{% block body %}
+
+<ol class="am-breadcrumb am-breadcrumb-slash">
+    <li><a href="{{ url('admin.home') }}" class="am-icon-home">首页</a></li>
+    <li class="am-active">栏目管理</li>
+</ol>
+<a href="{{ url('admin.class.add') }}" class="am-btn am-btn-secondary">添加栏目</a>
+<ul class="classlist am-margin-xs" id="classlist" data-url="{{ url('admin.class.ajax',{'id':'[id]'}) }}">
+    <div id="ajaxItem">
+        <li classid="<!--[id]-->" class="<!--[class]-->">
+            <div class="am-g">
+                <div class="am-u-sm-4">
+                <!--[plus]-->
+                <a href="{{ url('admin.content',{'id':'<!--[id]-->'}) }}">
+                    <!--[title]-->
+
+                </a>
+                </div>
+                <div class="am-u-sm-8 am-text-right">
+                        <small>[排序:<!--[px]-->]</small>
+                        &nbsp;
+                    <span class="am-text-lg">
+                        <a href="{{ url('admin.class.add',{'id':'<!--[id]-->'}) }}" title="新增子栏目"><i class="am-icon am-icon-sign-in"></i></a>
+                        &nbsp;
+                        <a href="{{ url('admin.class.edit',{'id':'<!--[id]-->'}) }}" title="编辑"><i class="am-icon am-icon-wrench"></i></a>
+                        &nbsp;
+                        <a id="delete" href="{{ url('admin.class.delete',{'id':'<!--[id]-->'}) }}" title="删除"><i class="am-icon am-icon-times"></i></a>
+                    </span>
+                </div>
+            </div>
+        </li>
+    </div>
+</ul>
+{% endblock %}

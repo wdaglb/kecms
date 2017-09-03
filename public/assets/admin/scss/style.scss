@@ -1,7 +1,8 @@
 html, body, p, ul, li, iframe {
   margin: 0;
   padding: 0;
-  list-style: none; }
+  list-style: none;
+}
 
 html, body {
   width: 100%;
@@ -13,11 +14,13 @@ body {
   font-weight: normal;
   line-height: 1.6;
   color: #333333;
-  font-size: 1.6rem; }
+  font-size: 1.6rem;
+}
 
 a {
   color: #e08;
-  text-decoration: none; }
+  text-decoration: none; 
+}
 
 
 // 浮层
@@ -67,8 +70,8 @@ a {
   }
 }
 .margin {
-  margin: 5px 15px 5px 15px; }
-
+  margin: 5px 15px 5px 15px;
+}
 // 顶栏
 .top {
   color: #fff;
@@ -98,21 +101,21 @@ a {
   bottom: 0;
   width: 200px;
   border: solid 1px #e3e3e3;
-  font-size: 1.2rem;
+  font-size: 1.0rem;
   li + li {
     border-top: solid 1px #e3e3e3;
   }
   .sidebar-head {
     background: #eee;
     a {
-      padding: 10px 15px 10px 15px;
+      padding: 4px 15px 4px 15px;
       display: block;
     }
   }
   .sidebar-sub {
     background: #fff;
     a {
-      padding: 10px 15px 10px 15px;
+      padding: 4px 15px 4px 15px;
       display: block;
     }
   }
@@ -133,10 +136,12 @@ a {
 }
 
 .padding-sm {
-  padding: 10px 20px 10px 20px; }
+  padding: 10px 20px 10px 20px;
+}
 
 .padding-xs {
-  padding: 5px; }
+  padding: 5px;
+}
 
 .text-primary {
   display: block;

@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "ke/framework",
-            "version": "1.35",
+            "version": "1.37",
             "source": {
                 "type": "git",
                 "url": "https://github.com/wdaglb/keframework.git",
-                "reference": "4ffd10e773a0542e12e62ac04b7934395d65b729"
+                "reference": "2bd413e590f990ec3ed3617d1d13ca8843e596e9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://files.phpcomposer.com/files/wdaglb/keframework/4ffd10e773a0542e12e62ac04b7934395d65b729.zip",
-                "reference": "4ffd10e773a0542e12e62ac04b7934395d65b729",
+                "url": "https://files.phpcomposer.com/files/wdaglb/keframework/2bd413e590f990ec3ed3617d1d13ca8843e596e9.zip",
+                "reference": "2bd413e590f990ec3ed3617d1d13ca8843e596e9",
                 "shasum": ""
             },
             "require": {
@@ -45,7 +45,7 @@
                     "email": "1207877378@qq.com"
                 }
             ],
-            "time": "2017-08-11T07:09:07+00:00"
+            "time": "2017-08-26T15:06:21+00:00"
         },
         {
             "name": "twig/twig",

@@ -28,8 +28,8 @@ class Controller extends \ke\Controller
             }
         }else{
             $form=post('_token_');
-            if($form=='') throw new Exception('非法操作');
-            if($form!=$csrf_token) throw new Exception('非法操作');
+            if($form=='') return $this->aError('非法操作');
+            if($form!=$csrf_token) return $this->aError('非法操作');
         }
         $this->assign('csrf_token',$csrf_token);
     }
@@ -40,7 +40,7 @@ class Controller extends \ke\Controller
         if(in_array($ct,['index@login','index@reset'])) return;
         $user=m('admin')->checkLogin();
         if(!$user){
-            return $this->error('权限不足,请先登录系统',url('adminlogin'));
+            return $this->aError('权限不足,请先登录系统',url('adminlogin'));
         }
 
         // 初始化站点配置

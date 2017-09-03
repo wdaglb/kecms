@@ -3,27 +3,36 @@
 {% block body %}
 
 
-<form id="form">
+<ol class="am-breadcrumb am-breadcrumb-slash">
+    <li><a href="{{ url('admin.home') }}" class="am-icon-home">首页</a></li>
+    <li class="am-active">站点设置</li>
+</ol>
+<form id="form" class="am-form am-form-horizontal">
 
-  <div class="tabs">
-      <ul class="tabs-head">
-        <li class="active">基本信息</li>
-        <li>SEO 选项</li>
-      </ul>
+  <div class="am-tabs" data-am-tabs="{noSwipe: 1}">
+    <ul class="am-tabs-nav am-nav am-nav-tabs">
+      <li class="am-active"><a href="javascript: void(0)">基本信息</a></li>
+      <li><a href="javascript: void(0)">SEO 选项</a></li>
+    </ul>
 
-      <ul class="tabs-body">
-        <li>
-          <div class="form-inline">
-            <label class="label">站点状态</label>
-            <select name="status" class="input">
+    <div class="am-tabs-bd">
+      <div class="am-tab-panel am-active">
+
+
+        <div class="am-form-group">
+          <span class="am-u-sm-1 am-form-label">站点状态</span>
+          <div class="am-u-sm-11">
+            <select name="status" data-am-selected>
               <option value="0" {{ site.status==0 ? 'selected' : ''}}>启动</option>
               <option value="1" {{ site.status==1 ? 'selected' : ''}}>关闭</option>
             </select>
           </div>
+        </div>
 
-          <div class="form-inline">
-            <label class="label">用户注册</label>
-            <select name="reg" class="input">
+        <div class="am-form-group">
+          <span class="am-u-sm-1 am-form-label">用户注册</span>
+          <div class="am-u-sm-11">
+            <select name="reg" data-am-selected="{maxHeight:100}">
               <option value="-1" {{ site.reg==-1 ? 'selected' : ''}}>关闭注册</option>
               <option value="0" {{ site.reg==0 ? 'selected' : ''}}>普通注册</option>
               <option value="1" {{ site.reg==1 ? 'selected' : ''}}>短信注册</option>
@@ -32,33 +41,48 @@
               <option value="4" {{ site.reg==4 ? 'selected' : ''}}>普通+邮箱注册</option>
             </select>
           </div>
-          <div class="form-inline">
-            <label class="label">站点名称</label>
+        </div>
+
+        <div class="am-form-group">
+          <span class="am-u-sm-1 am-form-label">站点名称</span>
+          <div class="am-u-sm-11">
             <input type="text" class="input" name="title" value="{{ site.title }}">
           </div>
-          <div class="form-inline">
-            <label class="label">备案号</label>
+        </div>
+
+        <div class="am-form-group">
+          <span class="am-u-sm-1 am-form-label">备案号</span>
+          <div class="am-u-sm-11">
             <input type="text" class="input" name="icp" value="{{ site.icp }}">
           </div>
-        </li>
+        </div>
 
-        <!-- SEO -->
-        <li>
-          <div class="form-group">
-            <label class="label">SEO 关键字</label>
+      </div>
+
+      <!-- SEO -->
+      <div class="am-tab-panel">
+
+        <div class="am-form-group">
+          <span class="am-u-sm-1 am-form-label">关键字</span>
+          <div class="am-u-sm-11">
             <textarea name="seo_keywords" rows="4" class="textarea">{{ site.keywords }}</textarea>
           </div>
-          <div class="form-group">
-            <label class="label">SEO 描述</label>
+        </div>
+
+        <div class="am-form-group">
+          <span class="am-u-sm-1 am-form-label">描述</span>
+          <div class="am-u-sm-11">
             <textarea name="seo_description" rows="4" class="textarea">{{ site.description }}</textarea>
           </div>
-        </li>
-      </ul>
+        </div>
+      </div>
 
+      
     </div>
+  </div>
 
-  <div class="margin">
-    <button type="submit" class="button">提交保存</button>
+  <div class="am-margin">
+    <button type="submit" class="am-btn am-btn-xs am-btn-primary">提交保存</button>
   </div>
 
 </form>
